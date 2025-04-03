@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Sidebar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-gray-800">Noken <span class="text-orange-500">Shop</span></h1>
+        
+        <!-- Icon Keranjang Belanja -->
+        <div x-data="{ cartOpen: false }">
+            <button @click="cartOpen = true" class="relative p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7 text-gray-700">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1 5m0 0h11m-11 0a2 2 0 104 0m7 0a2 2 0 104 0" />
+                </svg>
+                <!-- Notifikasi jumlah item -->
+                <span class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">4</span>
+            </button>
+
+            <!-- Sidebar (Keranjang Belanja) -->
+            <div 
+                x-show="cartOpen" 
+                class="fixed inset-0 bg-black bg-opacity-50 z-40"
+                @click="cartOpen = false">
+            </div>
+
+            <div x-show="cartOpen" x-transition 
+                class="fixed right-0 top-0 w-80 h-full bg-white shadow-lg z-50 p-5 transform translate-x-full transition-transform duration-300"
+                x-bind:class="{'translate-x-0': cartOpen, 'translate-x-full': !cartOpen}">
+                
+                <!-- Header -->
+                <div class="flex justify-between items-center">
+                    <h2 class="text-lg font-semibold text-gray-800">Keranjang Belanja</h2>
+                    <button @click="cartOpen = false" class="text-gray-500 hover:text-gray-700">
+                        ✕
+                    </button>
+                </div>
+
+                <!-- Daftar Barang -->
+                <div class="mt-4 space-y-3">
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <span>Produk A</span>
+                        <span class="font-semibold">Rp 100.000</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <span>Produk B</span>
+                        <span class="font-semibold">Rp 50.000</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <span>Produk C</span>
+                        <span class="font-semibold">Rp 75.000</span>
+                    </div>
+                </div>
+
+                <!-- Tombol Checkout -->
+                <button class="w-full mt-4 bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition">
+                    Checkout
+                </button>
+            </div>
+        </div>
+
+              <!-- Sidebar (Keranjang Belanja) -->
+      <div 
+      x-show="cartOpen" 
+      class="fixed inset-0 bg-black bg-opacity-50 z-40"
+      @click="cartOpen = false">
+        </div>
+  
+        <div x-show="cartOpen" x-transition 
+      class="fixed right-0 top-0 w-80 h-full bg-white shadow-lg z-50 p-5 transform translate-x-full transition-transform duration-300"
+      x-bind:class="{'translate-x-0': cartOpen, 'translate-x-full': !cartOpen}">
+      
+      <!-- Header -->
+      <div class="flex justify-between items-center">
+          <h2 class="text-lg font-semibold text-dark">Keranjang Belanja</h2>
+          <button @click="cartOpen = false" class="text-gray-500 hover:text-gray-700">
+              ✕
+          </button>
+      </div>
+  
+      <!-- Daftar Barang -->
+      <div class="mt-4 space-y-3 text-dark">
+          <div class="flex justify-between items-center border-b pb-2">
+              <span>Produk A</span>
+              <span class="font-semibold">Rp 100.000</span>
+          </div>
+          <div class="flex justify-between items-center border-b pb-2">
+              <span>Produk B</span>
+              <span class="font-semibold">Rp 50.000</span>
+          </div>
+          <div class="flex justify-between items-center border-b pb-2">
+              <span>Produk C</span>
+              <span class="font-semibold">Rp 75.000</span>
+          </div>
+      </div>
+  
+      <!-- Tombol Checkout -->
+      <button class="w-full mt-4 bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition">
+          Checkout
+      </button>
+        </div>
+        <!-- /Side bar (Keranjang Belanja) -->
+    </nav>
+
+        <!-- Why Us Section -->
+        <section id="why-us" class="why-us section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+              <h2>Why Us</h2>
+              <div><span>Why choose</span> <span class="description-title">Our Noken Shop</span></div>
+      
+            </div><!-- End Section Title -->
+      
+            <div class="container">
+      
+              <div class="row gy-4">
+      
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                  <div class="card-item">
+                    <span>01</span>
+                    <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
+                    <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+                  </div>
+                </div><!-- Card Item -->
+      
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                  <div class="card-item">
+                    <span>02</span>
+                    <h4><a href="" class="stretched-link">Repellat Nihil</a></h4>
+                    <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
+                  </div>
+                </div><!-- Card Item -->
+      
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                  <div class="card-item">
+                    <span>03</span>
+                    <h4><a href="" class="stretched-link">Ad ad velit qui</a></h4>
+                    <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
+                  </div>
+                </div><!-- Card Item -->
+      
+              </div>
+      
+            </div>
+      
+          </section>
+          <!-- /Why Us Section -->
+
+    <div class="relative flex items-center">
+        <!-- Input Search -->
+        <input type="text" placeholder="Search.....!!" 
+            class="px-4 py-2 w-62 border-bottom  bg-transparent text-white  focus:outline-none focus:ring-0 placeholder-gray-300">
+        
+        <!-- Tombol Search -->
+        <button class="ml-2 px-4 py-2 border text-[#ffb03b] rounded-md hover:bg-[#ffb03b] hover:text-white transition" >
+            Search
+        </button>
+        <!-- Keranjang belanja -->
+
+        <div x-data="{ cartOpen: false }">
+          <button @click="cartOpen = true" class="relative p-2 text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-7 h-7 text-gray-700">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1 5m0 0h11m-11 0a2 2 0 104 0m7 0a2 2 0 104 0" />
+              </svg>
+              <!-- Notifikasi jumlah item -->
+              <span class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">4</span>
+          </button>
+        </div>
+      
+      </div>
+    </nav>
+</body>
+</html>
+
+
+
+
+<!-- search box  -->
+<div  class="relative flex items-center border-none">
+    <!-- Input Search -->
+    <input type="text" id="search-box" placeholder="Search here....!!" 
+        class="px-4 py-2 w-62 border-bottom  bg-transparent text-white placeholder-grey-600">
+    
+    <!-- Tombol Search -->
+    <button id="btn-search" class="ml-2 px-4 py-2 border text-[#ffb03b] rounded-md hover:bg-[#ffb03b] hover:text-white transition" >
+        Search
+    </button>
+    <!-- Keranjang belanja -->
+
+  
+  </div>
