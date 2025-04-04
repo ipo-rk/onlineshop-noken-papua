@@ -322,6 +322,8 @@ h6 {
   width: 150px;
   border-bottom: 1px solid white;
 }
+
+/* siderbar start */
 .sidebar {
   position: fixed;
   top: 0;
@@ -363,6 +365,15 @@ h6 {
   border: var(--accent-color) 1px solid;
   color: var(--accent-color);
 }
+
+.icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.like.active {
+  color: red;
+}
+/* sidebar end */
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -897,6 +908,7 @@ section,
   font-size: 48px;
   font-weight: 700;
   animation: fadeInDown 1s both;
+  text-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .hero h2 span,
