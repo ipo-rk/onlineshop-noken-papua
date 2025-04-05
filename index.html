@@ -434,8 +434,11 @@
                                 <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i class="bi bi-heart icon like"
-                                    @click="$event.target.classList.toggle('active')"></i>
+                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
+                                    @click="product.liked = !product.liked">
+                                  </i>
+
+
                                 </div>
                               </div>
                             </div>
@@ -452,7 +455,7 @@
                 <div class="row">
                   <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
 
-                    <!-- card product -->
+                    <!-- card product 2 -->
                     <div class="container mt-5">
                       <div class="row">
                         <template x-for="(product, index) in products2" :key="index">
@@ -464,8 +467,9 @@
                                 <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i class="bi bi-heart icon like"
-                                    @click="$event.target.classList.toggle('active')"></i>
+                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
+                                    @click="product.liked = !product.liked">
+                                  </i>
                                 </div>
                               </div>
                             </div>
@@ -473,7 +477,7 @@
                         </template>
                       </div>
                     </div>
-                    <!-- card product end -->
+                    <!-- card product 2 end -->
                   </div>
                 </div>
               </div>
@@ -481,7 +485,7 @@
                 <div class="row">
                   <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
 
-                    <!-- card product -->
+                    <!-- card product 3-->
                     <div class="container mt-5">
                       <div class="row">
                         <template x-for="(product, index) in products" :key="index">
@@ -493,8 +497,10 @@
                                 <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i class="bi bi-heart icon like"
-                                    @click="$event.target.classList.toggle('active')"></i>
+                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
+                                    @click="product.liked = !product.liked">
+                                  </i>
+
                                 </div>
                               </div>
                             </div>
@@ -502,7 +508,7 @@
                         </template>
                       </div>
                     </div>
-                    <!-- card product end -->
+                    <!-- card product 3 end -->
 
                   </div>
                 </div>
@@ -511,7 +517,7 @@
                 <div class="row">
                   <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
 
-                    <!-- card product -->
+                    <!-- card product 4-->
                     <div class="container mt-5">
                       <div class="row">
                         <template x-for="(product, index) in products" :key="index">
@@ -523,8 +529,10 @@
                                 <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i class="bi bi-heart icon like"
-                                    @click="$event.target.classList.toggle('active')"></i>
+                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
+                                    @click="product.liked = !product.liked">
+                                  </i>
+
                                 </div>
                               </div>
                             </div>
@@ -532,7 +540,7 @@
                         </template>
                       </div>
                     </div>
-                    <!-- card product end -->
+                    <!-- card product 4 end -->
 
                   </div>
                 </div>
@@ -541,7 +549,7 @@
                 <div class="row">
                   <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
 
-                    <!-- card product -->
+                    <!-- card product 5-->
                     <div class="container mt-5">
                       <div class="row">
                         <template x-for="(product, index) in products" :key="index">
@@ -553,8 +561,9 @@
                                 <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i class="bi bi-heart icon like"
-                                    @click="$event.target.classList.toggle('active')"></i>
+                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
+                                    @click="product.liked = !product.liked">
+                                  </i>
                                 </div>
                               </div>
                             </div>
@@ -562,7 +571,7 @@
                         </template>
                       </div>
                     </div>
-                    <!-- card product end -->
+                    <!-- card product 5 end -->
 
                   </div>
                 </div>
@@ -826,7 +835,7 @@
 
   <!-- Preloader -->
   <div id="preloader">
-    <!-- <img src="assets/img/favicon.png" alt="Noken Papua" id="preloader-img"> -->
+    <img src="assets/img/favicon.png" alt="Noken Papua" id="preloader-img">
   </div>
 
 
