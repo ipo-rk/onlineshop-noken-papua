@@ -48,9 +48,10 @@
         <div class="icon-container">
           <div class="search-container" x-data="{ open: true }">
             <i class="bi bi-search" @click="open = !open"></i>
-            <input type="text" class="search-input form-control" x-show="open" @click.away="open = false" />
+            <input type="text" class="search-input form-control  ms-2 px-2" x-show="open" @click.away="open = true" />
           </div>
-          <i class="bi bi-cart icon text-white" @click="showSidebar = true"></i>
+          <i class="bi bi-cart icon text-white" @click="showSidebar = true"></i><span class="qty-badge"
+            x-text="totalItems"></span>
         </div>
       </div>
     </div>
@@ -68,7 +69,7 @@
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#menu">Menu</a></li>
+            <li><a href="#menu">Jenis Noken</a></li>
             <li><a href="#specials">Product</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -229,7 +230,7 @@
 
 
     <!-- Menu Section -->
-    <section id="menu" class="menu section">
+    <section id="menu" class="menu section" x-data="cartHandler()">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Menu</h2>
@@ -240,142 +241,63 @@
       </div>
       <!-- End Section Title -->
 
-      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order"
+        x-data="cartHandler()">
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul class="menu-filters isotope-filters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-starters">Noken Kecil</li>
-              <li data-filter=".filter-salads">Noken Besar</li>
+              <li data-filter=".filter-starters">Noken Rajutan Kulit Kayu</li>
+              <li data-filter=".filter-salads">Noken Rajutan Benang</li>
               <li data-filter=".filter-specialty">Aksesoris</li>
             </ul>
           </div>
         </div>
         <!-- Menu Filters -->
 
-        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200" x-data="cartHandler()">
 
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product  2.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Kulit Kayu </a><span>$9.80</span>
+          <template x-for="(product, index) in products" :key="index">
+            <div class="col-lg-6 menu-item isotope-item filter-starters ">
+              <img :src="product.image" class="menu-img " :alt=".Product">
+              <div class="menu-content">
+                <a href="#specials" class="card-title" x-text="product.name">Rp </a>
+                <span x-text="product.price.toLocaleString()"></span>
+              </div>
+              <div class="menu-ingredients">
+                Lorem, deren, trataro, filede, nerada
+              </div>
             </div>
-            <div class="menu-ingredients">
-              Noken ini bisa dibawah kemana saja dan mengisi barang bawaan seperti buku, dompet dan lainnya
+          </template>
+          <template x-for="(product, index) in products2" :key="index">
+            <div class="col-lg-6 menu-item isotope-item filter-salads ">
+              <img :src="product.image" class="menu-img " :alt=".Product">
+              <div class="menu-content">
+                <a href="#specials" class="card-title" x-text="product.name">Rp </a>
+                <span x-text="product.price.toLocaleString()"></span>
+              </div>
+              <div class="menu-ingredients">
+                Lorem, deren, trataro, filede, nerada
+              </div>
             </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/menu/product 6.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Anting-anting Bia</a><span>$6.95</span>
+          </template>
+          <template x-for="(product, index) in products3" :key="index">
+            <div class="col-lg-6 menu-item isotope-item filter-specialty ">
+              <img :src="product.image" class="menu-img " :alt=".Product">
+              <div class="menu-content">
+                <a href="#specials" class="card-title" x-text="product.name">Rp </a>
+                <span x-text="product.price.toLocaleString()"></span>
+              </div>
+              <div class="menu-ingredients">
+                Lorem, deren, trataro, filede, nerada
+              </div>
             </div>
-            <div class="menu-ingredients">
-              Anting-anting yang terbuat dari bia adalah salah satu Aksesoris yang dapat digunakan oleh para wanita.
-            </div>
-          </div><!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product 5.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken tas kulit kayu</a><span>$7.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Noken rajutan kulit kayu ini lebih cocok bagi perempuan, akan tampill lebih cantik jika di pakai ke acara
-              nikah atau pertemuan apa saja 😁
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/menu/product 1.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Besar kulit kayu</a><span>$8.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Bisa dapat mengisi barang belanjaan seperti sayur atau barang belanjaan llainnya
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/menu/product 9.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Kecil Rajutan Benang</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-            </div>
-          </div><!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product 9.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Kecil Motiv PNG Rajutan Benang</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/menu/product 3.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Besar Kulit kayu Original</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Noken asli rajutan mama papua dari kulit kayu
-              dan diolah menjadi Noken yang dapat digunakan menjadi gendongan bayi atau mengisi barang bbanyak
-            </div>
-          </div>
-          <!-- Menu Item -->
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product 8.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Kecil Kulit Kayu</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/menu/product 4.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Kecil Rajutan Kulit Kayu</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/menu/product 8.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Kecil Rajutan Benang</a><span>$12.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-            </div>
-          </div>
-          <!-- Menu Item -->
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product 7.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#">Noken Motiv Rajutan Benang</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
+          </template>
           <!-- Menu Item -->
 
         </div>
         <!-- Menu Container -->
+        </template>
       </div>
     </section>
     <!-- /Menu Section -->
@@ -398,19 +320,13 @@
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
               <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" href="#specials-tab-1">Noken Kecil</a>
+                <a class="nav-link active show" data-bs-toggle="tab" href="#specials-tab-1">Noken Rajutan Kulit Kayu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-2">Noken Besar</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-2">Noken Rajutan Benang</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-3">Aksesoris</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-4">Noken Rajutan Kulit Kayu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-5">Noken Rajutan Benang</a>
               </li>
             </ul>
           </div>
@@ -425,25 +341,28 @@
                     <!-- card product -->
                     <div class="container mt-5">
                       <div class="row">
+
                         <template x-for="(product, index) in products" :key="index">
                           <div class="col-md-3 mb-3">
                             <div class="card">
                               <img :src="product.image" class="card-img-top" alt="Product">
                               <div class="card-body">
                                 <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
+                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span>
+                                </p>
+                                <span class="diskon" x-text="product.diskon">Rp 300.000</span>
+
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
                                     @click="product.liked = !product.liked">
                                   </i>
-
-
                                 </div>
                               </div>
                             </div>
                           </div>
                         </template>
+
                       </div>
                     </div>
                     <!-- card product end -->
@@ -464,7 +383,8 @@
                               <img :src="product.image" class="card-img-top" alt="product">
                               <div class="card-body">
                                 <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
+                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
+                                <span class="diskon" x-text="product.diskon"></span>
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
@@ -488,13 +408,15 @@
                     <!-- card product 3-->
                     <div class="container mt-5">
                       <div class="row">
-                        <template x-for="(product, index) in products" :key="index">
+                        <template x-for="(product, index) in products3" :key="index">
                           <div class="col-md-3 mb-3">
                             <div class="card">
                               <img :src="product.image" class="card-img-top" alt="Product">
                               <div class="card-body">
                                 <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
+                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
+                                <span class="diskon" x-text="product.diskon"></span>
+
                                 <div class="d-flex justify-content-between">
                                   <i class="bi bi-cart icon" @click="addToCart(product)"></i>
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
@@ -509,69 +431,6 @@
                       </div>
                     </div>
                     <!-- card product 3 end -->
-
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-4">
-                <div class="row">
-                  <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
-
-                    <!-- card product 4-->
-                    <div class="container mt-5">
-                      <div class="row">
-                        <template x-for="(product, index) in products" :key="index">
-                          <div class="col-md-3 mb-3">
-                            <div class="card">
-                              <img :src="product.image" class="card-img-top" alt="Product">
-                              <div class="card-body">
-                                <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
-                                <div class="d-flex justify-content-between">
-                                  <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
-                                    @click="product.liked = !product.liked">
-                                  </i>
-
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </template>
-                      </div>
-                    </div>
-                    <!-- card product 4 end -->
-
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-5">
-                <div class="row">
-                  <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
-
-                    <!-- card product 5-->
-                    <div class="container mt-5">
-                      <div class="row">
-                        <template x-for="(product, index) in products" :key="index">
-                          <div class="col-md-3 mb-3">
-                            <div class="card">
-                              <img :src="product.image" class="card-img-top" alt="Product">
-                              <div class="card-body">
-                                <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text">Rp <span x-text="product.price.toLocaleString()"></span></p>
-                                <div class="d-flex justify-content-between">
-                                  <i class="bi bi-cart icon" @click="addToCart(product)"></i>
-                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
-                                    @click="product.liked = !product.liked">
-                                  </i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </template>
-                      </div>
-                    </div>
-                    <!-- card product 5 end -->
 
                   </div>
                 </div>

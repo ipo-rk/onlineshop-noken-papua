@@ -309,6 +309,7 @@ h6 {
   align-items: center;
 }
 .search-input {
+  font-size: 1rem;
   padding: 0;
   background: transparent;
   border: none;
@@ -360,14 +361,32 @@ h6 {
 }
 
 .icon-container {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 15px;
 }
+.icon-container .qty-badge{
+  display: inline-block;
+  padding: 0px 4px;
+  background-color: red;
+  font-size: 0.5rem;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  right: -10px;
+}
+
 .icon-container i {
   font-size: 1.3rem;
   cursor: pointer;
   color: white;
+}
+
+.container .diskon {
+  text-decoration: line-through;
+  font-size: 12px;
+  font-weight: lighter;
 }
 
 /* #checkout-btn {
@@ -1156,10 +1175,11 @@ section,
 }
 
 .menu .menu-img {
-  width: 80px;
-  border-radius: 50%;
+  width: 6rem;
+  margin-right: 10px;
+  border-radius: 10%;
   float: left;
-  border: 8px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border: 3px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .menu .menu-content {
@@ -1234,11 +1254,12 @@ section,
   border-right: 2px solid
     color-mix(in srgb, var(--default-color), transparent 90%);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .specials .nav-link:hover {
   color: var(--accent-color);
+  background-color: #fff;
 }
 
 .specials .nav-link.active {
