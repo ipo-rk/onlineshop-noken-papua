@@ -81,17 +81,17 @@
         <div class="sidebar-overlay" @click="closeSidebar()" x-show="showSidebar" x-transition.opacity></div>
 
         <!-- Sidebar Shopping Cart -->
-        <div class="sidebar text-dark" :class="showSidebar ? 'active' : ''">
+        <div class="sidebar text-dark " :class="showSidebar ? 'active' : ''">
           <button class="btn-close" @click="closeSidebar()"></button>
           <h4 class="mt-3">Shopping Cart</h4>
           <ul class="list-unstyled">
             <template x-for="item in cart" :key="item.name">
-              <li class="d-flex justify-content-between align-items-center mb-2">
+              <li class="d-flex justify-content-between align-items-center mb-1">
                 <span x-text="item.name"></span>
                 <div>
-                  <button class="btn btn-sm btn-outline-secondary" @click="decreaseQty(item)">-</button>
+                  <button class="btn btn-sm btn-outline-secondary text-dark" @click="decreaseQty(item)">-</button>
                   <span class="mx-2" x-text="item.qty"></span>
-                  <button class="btn btn-sm btn-outline-primary" @click="increaseQty(item)">+</button>
+                  <button class="btn btn-sm btn-outline-primary text-dark" @click="increaseQty(item)">+</button>
                 </div>
                 <span>Rp <span x-text="(item.price * item.qty).toLocaleString()"></span></span>
               </li>
@@ -104,7 +104,7 @@
           <div class="d-flex justify-content-between">
             <strong>Total Harga:</strong> <span>Rp <span x-text="totalPrice.toLocaleString()"></span></span>
           </div>
-          <button class="btn btn-success w-100 mt-3" @click="checkout()">Checkout</button>
+          <button class="btn w-100 mt-3 btn-outline-dark text-white" @click="checkout()">Checkout</button>
         </div>
 
       </div>
@@ -123,7 +123,7 @@
           <div class="carousel-container">
 
             <h2>
-              <span class=" fs-4 text-white ">SELAMAT DATANG DI WEBSITE</span><br>
+              <span class="website text-white  ">SELAMAT DATANG DI WEBSITE</span><br>
               <span>Penjualan NOKEN</span> Mama Papua
             </h2>
             <p>Terdapat bebrbagai Noken hasil rajutan original dari kulit kayu yang di olah langsung oleh mama mama
@@ -230,19 +230,18 @@
 
 
     <!-- Menu Section -->
-    <section id="menu" class="menu section" x-data="cartHandler()">
+    <section id="menu" class="menu section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Menu</h2>
+        <h2>Jenis Noken</h2>
         <div>
-          <span>Check Our Tasty</span>
-          <span class="description-title">Menu</span>
+          <span>Check Our</span>
+          <span class="description-title">Noken & Details </span>
         </div>
       </div>
       <!-- End Section Title -->
 
-      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order"
-        x-data="cartHandler()">
+      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul class="menu-filters isotope-filters">
@@ -255,49 +254,104 @@
         </div>
         <!-- Menu Filters -->
 
-        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200" x-data="cartHandler()">
+        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-          <template x-for="(product, index) in products" :key="index">
-            <div class="col-lg-6 menu-item isotope-item filter-starters ">
-              <img :src="product.image" class="menu-img " :alt=".Product">
-              <div class="menu-content">
-                <a href="#specials" class="card-title" x-text="product.name">Rp </a>
-                <span x-text="product.price.toLocaleString()"></span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
+          <div class="col-lg-6 menu-item isotope-item filter-starters">
+            <img src="assets/img/menu/product  2.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Noken Kulit Kayu </a>
             </div>
-          </template>
-          <template x-for="(product, index) in products2" :key="index">
-            <div class="col-lg-6 menu-item isotope-item filter-salads ">
-              <img :src="product.image" class="menu-img " :alt=".Product">
-              <div class="menu-content">
-                <a href="#specials" class="card-title" x-text="product.name">Rp </a>
-                <span x-text="product.price.toLocaleString()"></span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
+            <div class="menu-ingredients">
+              Noken ini bisa dibawah kemana saja dan mengisi barang bawaan seperti buku, dompet dan lainnya
             </div>
-          </template>
-          <template x-for="(product, index) in products3" :key="index">
-            <div class="col-lg-6 menu-item isotope-item filter-specialty ">
-              <img :src="product.image" class="menu-img " :alt=".Product">
-              <div class="menu-content">
-                <a href="#specials" class="card-title" x-text="product.name">Rp </a>
-                <span x-text="product.price.toLocaleString()"></span>
-              </div>
-              <div class="menu-ingredients">
-                Lorem, deren, trataro, filede, nerada
-              </div>
-            </div>
-          </template>
+          </div>
           <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+            <img src="assets/img/menu/product 6.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Anting-anting Bia</a>
+            </div>
+            <div class="menu-ingredients">
+              Anting-anting yang terbuat dari bia adalah salah satu Aksesoris yang dapat digunakan oleh para wanita.
+            </div>
+          </div><!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-starters">
+            <img src="assets/img/menu/product 5.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Noken tas kulit kayu</a>
+            </div>
+            <div class="menu-ingredients">
+              Noken rajutan kulit kayu ini lebih cocok bagi perempuan, akan tampill lebih cantik jika di pakai ke acara
+              nikah atau pertemuan apa saja 😁
+            </div>
+          </div><!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-salads">
+            <img src="assets/img/menu/product 1.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Noken Besar kulit kayu</a>
+            </div>
+            <div class="menu-ingredients">
+              Bisa dapat mengisi barang belanjaan seperti sayur atau barang belanjaan llainnya
+            </div>
+          </div><!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+            <img src="assets/img/menu/product 9.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Tuscan Grilled</a>
+            </div>
+            <div class="menu-ingredients">
+              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
+            </div>
+          </div><!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-starters">
+            <img src="assets/img/menu/product  2.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Noken Kulit Kayu</a>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-salads">
+            <img src="assets/img/menu/product 3.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#">Noken Besar Kulit kayu Original</a>
+            </div>
+            <div class="menu-ingredients">
+              Noken asli rajutan mama papua dari kulit kayu
+              dan diolah menjadi Noken yang dapat digunakan menjadi gendongan bayi atau mengisi barang bbanyak
+            </div>
+          </div><!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-salads">
+            <img src="assets/img/menu/product 4.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#"></a>
+            </div>
+            <div class="menu-ingredients">
+              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+            </div>
+          </div><!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+            <img src="assets/img/menu/product 8.jpg" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#"></a>
+            </div>
+            <div class="menu-ingredients">
+              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+            </div>
+          </div><!-- Menu Item -->
 
         </div>
         <!-- Menu Container -->
-        </template>
       </div>
     </section>
     <!-- /Menu Section -->
@@ -694,7 +748,7 @@
 
   <!-- Preloader -->
   <div id="preloader">
-    <img src="assets/img/favicon.png" alt="Noken Papua" id="preloader-img">
+    <!-- <img src="assets/img/favicon.png" alt="Noken Papua" id="preloader-img"> -->
   </div>
 
 
