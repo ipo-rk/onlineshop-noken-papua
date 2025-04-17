@@ -45,10 +45,10 @@
           <i class="bi bi-phone d-flex align-items-center d-none d-lg-block"><span>+6281215376865</span></i>
           <i class="bi bi-clock ms-4 d-none d-lg-flex align-items-center"><span>Mon-Sat: 11:00 AM - 23:00 PM</span></i>
         </div>
-        <div class="icon-container">
+        <div class="icon-container me-3">
           <div class="search-container" x-data="{ open: true }">
             <i class="bi bi-search" @click="open = !open"></i>
-            <input type="text" class="search-input form-control  ms-2 px-2" x-show="open" @click.away="open = true" />
+            <input type="text" class="search-input form-control  ms-2" x-show="open" @click.away="open = true" />
           </div>
           <i class="bi bi-cart icon text-white" @click="showSidebar = true"></i><span class="qty-badge"
             x-text="totalItems"></span>
@@ -81,22 +81,39 @@
         <div class="sidebar-overlay" @click="closeSidebar()" x-show="showSidebar" x-transition.opacity></div>
 
         <!-- Sidebar Shopping Cart -->
-        <div class="sidebar text-dark " :class="showSidebar ? 'active' : ''">
+        <div class="sidebar text-dark" :class="showSidebar ? 'active' : ''">
           <button class="btn-close" @click="closeSidebar()"></button>
           <h4 class="mt-3">Shopping Cart</h4>
           <ul class="list-unstyled">
             <template x-for="item in cart" :key="item.name">
-              <li class="d-flex justify-content-between align-items-center mb-1">
-                <span x-text="item.name"></span>
-                <div>
-                  <button class="btn btn-sm btn-outline-secondary text-dark" @click="decreaseQty(item)">-</button>
-                  <span class="mx-2" x-text="item.qty"></span>
-                  <button class="btn btn-sm btn-outline-primary text-dark" @click="increaseQty(item)">+</button>
+              <li class="mb-3">
+                <div class="row align-items-center">
+                  <!-- Gambar -->
+                  <div class="col-3">
+                    <img :src="item.image" class="img-fluid rounded" alt=""
+                      style="width: 60px; height: 60px; object-fit: cover;">
+                  </div>
+
+                  <!-- Nama dan Qty -->
+                  <div class="col-5">
+                    <div class="fw-semibold mb-1" x-text="item.name" style="word-break: break-word;"></div>
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-sm btn-outline-secondary text-dark" @click="decreaseQty(item)">-</button>
+                      <span class="mx-2" x-text="item.qty"></span>
+                      <button class="btn btn-sm btn-outline-primary text-dark" @click="increaseQty(item)">+</button>
+                    </div>
+                  </div>
+
+                  <!-- Harga -->
+                  <div class="col-4 text-end">
+                    <small>Rp</small>
+                    <div class="fw-bold" x-text="(item.price * item.qty).toLocaleString()"></div>
+                  </div>
                 </div>
-                <span>Rp <span x-text="(item.price * item.qty).toLocaleString()"></span></span>
               </li>
             </template>
           </ul>
+
           <hr>
           <div class="d-flex justify-content-between">
             <strong>Total Barang:</strong> <span x-text="totalItems"></span>
@@ -106,6 +123,7 @@
           </div>
           <button class="btn w-100 mt-3 btn-outline-dark text-white" @click="checkout()">Checkout</button>
         </div>
+
 
       </div>
     </div>
@@ -235,8 +253,8 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>Jenis Noken</h2>
         <div>
-          <span>Check Our</span>
-          <span class="description-title">Noken & Details </span>
+          <span>Check Our </span>
+          <span class="description-title">NOKEN</span>
         </div>
       </div>
       <!-- End Section Title -->
@@ -246,8 +264,8 @@
           <div class="col-lg-12 d-flex justify-content-center">
             <ul class="menu-filters isotope-filters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-starters">Noken Rajutan Kulit Kayu</li>
-              <li data-filter=".filter-salads">Noken Rajutan Benang</li>
+              <li data-filter=".filter-starters">Rajutan Kulit Kayu</li>
+              <li data-filter=".filter-salads">Rajutan Benang</li>
               <li data-filter=".filter-specialty">Aksesoris</li>
             </ul>
           </div>
@@ -257,9 +275,9 @@
         <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product  2.jpg" class="menu-img" alt="">
+            <img src="assets/img/rajutan-kulit-kayu/10.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Noken Kulit Kayu </a>
+              <a href="#specials">Noken Kulit Kayu </a>
             </div>
             <div class="menu-ingredients">
               Noken ini bisa dibawah kemana saja dan mengisi barang bawaan seperti buku, dompet dan lainnya
@@ -270,48 +288,62 @@
           <div class="col-lg-6 menu-item isotope-item filter-specialty">
             <img src="assets/img/menu/product 6.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Anting-anting Bia</a>
+              <a href="#specials">Anting-anting Bia</a>
             </div>
             <div class="menu-ingredients">
               Anting-anting yang terbuat dari bia adalah salah satu Aksesoris yang dapat digunakan oleh para wanita.
             </div>
-          </div><!-- Menu Item -->
+          </div>
+          <!-- Menu Item -->
 
           <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product 5.jpg" class="menu-img" alt="">
+            <img src="assets/img/rajutan-kulit-kayu/11.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Noken tas kulit kayu</a>
+              <a href="#specials">Noken tas kulit kayu</a>
             </div>
             <div class="menu-ingredients">
               Noken rajutan kulit kayu ini lebih cocok bagi perempuan, akan tampill lebih cantik jika di pakai ke acara
               nikah atau pertemuan apa saja 😁
             </div>
-          </div><!-- Menu Item -->
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+            <img src="assets/img/aksesoris/20.png" class="menu-img" alt="">
+            <div class="menu-content">
+              <a href="#specials">Koteka Coklat</a>
+            </div>
+            <div class="menu-ingredients">
+              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+            </div>
+          </div>
 
           <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/menu/product 1.jpg" class="menu-img" alt="">
+            <img src="assets/img/rajutan-benang/19.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Noken Besar kulit kayu</a>
+              <a href="#specials">Noken Besar kulit kayu</a>
             </div>
             <div class="menu-ingredients">
               Bisa dapat mengisi barang belanjaan seperti sayur atau barang belanjaan llainnya
             </div>
-          </div><!-- Menu Item -->
+          </div>
+          <!-- Menu Item -->
 
           <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/menu/product 9.jpg" class="menu-img" alt="">
+            <img src="assets/img/aksesoris/21.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Tuscan Grilled</a>
+              <a href="#specials">Koteka Hitam</a>
             </div>
             <div class="menu-ingredients">
               Grilled chicken with provolone, artichoke hearts, and roasted red pesto
             </div>
-          </div><!-- Menu Item -->
+          </div>
+          <!-- Menu Item -->
 
           <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/menu/product  2.jpg" class="menu-img" alt="">
+            <img src="assets/img/rajutan-kulit-kayu/1.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Noken Kulit Kayu</a>
+              <a href="#specials">Noken Kulit Kayu</a>
             </div>
             <div class="menu-ingredients">
               Lorem, deren, trataro, filede, nerada
@@ -320,35 +352,30 @@
           <!-- Menu Item -->
 
           <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/menu/product 3.jpg" class="menu-img" alt="">
+            <img src="assets/img/rajutan-benang/17.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Noken Besar Kulit kayu Original</a>
+              <a href="#specials">Noken Besar Kulit kayu Original</a>
             </div>
             <div class="menu-ingredients">
               Noken asli rajutan mama papua dari kulit kayu
               dan diolah menjadi Noken yang dapat digunakan menjadi gendongan bayi atau mengisi barang bbanyak
             </div>
-          </div><!-- Menu Item -->
+          </div>
+          <!-- Menu Item -->
 
           <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/menu/product 4.jpg" class="menu-img" alt="">
+            <img src="assets/img/rajutan-benang/18.png" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#"></a>
+              <a href="#specials">Rajutan Benang Motiv PNG</a>
             </div>
             <div class="menu-ingredients">
               Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
             </div>
-          </div><!-- Menu Item -->
+          </div>
+          <!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/menu/product 8.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#"></a>
-            </div>
-            <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-            </div>
-          </div><!-- Menu Item -->
+
+          <!-- Menu Item -->
 
         </div>
         <!-- Menu Container -->
