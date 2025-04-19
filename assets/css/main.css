@@ -437,7 +437,7 @@ h6 {
   .navmenu a:focus {
     color: var(--nav-color);
     padding: 18px 15px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: var(--nav-font);
     font-weight: 400;
     display: flex;
@@ -952,7 +952,7 @@ section,
 }
 
 .hero h2 .website{
-  font-size: 25px;
+  font-size: 35px;
 }
 .hero h2 span,
 .branding h1 span {
@@ -960,8 +960,11 @@ section,
 }
 
 @media (max-width: 768px) {
+  .hero h2 .website{
+    font-size: 18px;
+  }
   .hero h2 {
-    font-size: 30px;
+    font-size: 20px;
   }
 }
 
@@ -1060,6 +1063,9 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+.about h2{
+  font-size: 1rem;
+}
 .about .content h3 {
   font-size: 1.75rem;
   font-weight: 700;
@@ -1090,53 +1096,6 @@ section,
   position: absolute;
   left: calc(50% - 47px);
   top: calc(50% - 47px);
-}
-
-/*--------------------------------------------------------------
-# Why Us Section
---------------------------------------------------------------*/
-.why-us .card-item {
-  background: color-mix(in srgb, var(--default-color), transparent 97%);
-  padding: 50px 30px;
-  transition: all ease-in-out 0.3s;
-  height: 100%;
-  position: relative;
-}
-
-.why-us .card-item span {
-  color: var(--accent-color);
-  display: block;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.why-us .card-item h4 {
-  font-size: 24px;
-  font-weight: 600;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.why-us .card-item h4 a {
-  color: var(--heading-color);
-}
-
-.why-us .card-item p {
-  font-size: 15px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  margin: 0;
-  padding: 0;
-}
-
-.why-us .card-item:hover {
-  background: var(--accent-color);
-  padding: 30px 30px 70px 30px;
-}
-
-.why-us .card-item:hover span,
-.why-us .card-item:hover h4 a,
-.why-us .card-item:hover p {
-  color: var(--contrast-color);
 }
 
 /*--------------------------------------------------------------
