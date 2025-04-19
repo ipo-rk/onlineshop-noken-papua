@@ -257,7 +257,8 @@
       </div>
       <!-- End Section Title -->
 
-      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order"
+        style="padding-bottom: 0;">
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
@@ -271,7 +272,7 @@
         </div>
         <!-- Menu Filters -->
 
-        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200" style="padding-bottom: 2rem;">
           <template x-for="(product, index) in products" :key="index">
             <div class="col-lg-6 menu-item isotope-item filter-starters">
               <img :src="product.image" class="menu-img" alt="">
@@ -310,12 +311,9 @@
 
           <!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+          <div class="col-lg-6 menu-item isotope-item  ">
             <img src=" " class="menu-img-none" alt="">
-            <div class="menu-content">
-              <a href="#"> </a><span> </span>
-            </div>
-            <div class="menu-ingredients">
+            <div class="menu-content1">
             </div>
           </div>
           <!-- Menu Item -->
@@ -324,11 +322,8 @@
 
         </div>
         <!-- Menu Container -->
-        <div class="col-lg-6 menu-item isotope-item  filter-*">
-          <div class="menu-content1">
-            <a href="#">Lihat Selengkapnya </a><span> </span>
-          </div>
-        </div>
+        <a class="nav-link text-end mx-0 align-items-star mx-0" href="#">Lihat Selengkapnya</a>
+
       </div>
 
     </section>
