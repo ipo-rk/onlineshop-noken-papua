@@ -1142,8 +1142,9 @@ section,
 /*--------------------------------------------------------------
 # Menu Section
 --------------------------------------------------------------*/
+
 .menu .menu-filters {
-  padding: 0;
+  padding: 20px 5px;
   margin: 0 auto;
   list-style: none;
   text-align: center;
@@ -1192,6 +1193,11 @@ section,
   justify-content: space-between;
   position: relative;
 }
+
+
+/* baru punya */
+
+/* baru punya end */
 
 .menu .menu-content::after {
   content: "......................................................................"

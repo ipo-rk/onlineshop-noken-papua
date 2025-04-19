@@ -248,7 +248,7 @@
 
 
     <!-- Menu Section -->
-    <section id="menu" class="menu section">
+    <section id="menu" class="menu section" x-data="cartHandler()">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Jenis Noken</h2>
@@ -259,7 +259,8 @@
       </div>
       <!-- End Section Title -->
 
-      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order"
+        style="padding-bottom: 50%;">
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul class="menu-filters isotope-filters">
@@ -273,109 +274,45 @@
         <!-- Menu Filters -->
 
         <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/rajutan-kulit-kayu/10.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Noken Kulit Kayu </a>
+          <template x-for="(product, index) in products" :key="product.name + index">
+            <div class="col-lg-6 menu-item isotope-item filter-starters">
+              <img :src="product.image" class="menu-img" :alt="product.name">
+              <div class="menu-content">
+                <a href="#specials">Noken Kulit Kayu </a>
+              </div>
+              <div class="menu-ingredients">
+                Noken ini bisa dibawah kemana saja dan mengisi barang bawaan seperti buku, dompet dan lainnya
+              </div>
             </div>
-            <div class="menu-ingredients">
-              Noken ini bisa dibawah kemana saja dan mengisi barang bawaan seperti buku, dompet dan lainnya
+          </template>
+          <template x-for="(product, index) in products2" :key="product.name + index">
+            <div class="col-lg-6 menu-item isotope-item filter-salads">
+              <img :src="product.image" class="menu-img" alt="">
+              <div class="menu-content">
+                <a href="#specials">Anting-anting Bia</a>
+              </div>
+              <div class="menu-ingredients">
+                Anting-anting yang terbuat dari bia adalah salah satu Aksesoris yang dapat digunakan oleh para wanita.
+              </div>
             </div>
-          </div>
+          </template>
+          <template x-for="(product, index) in products3" :key="product.name + index">
+            <div class="col-lg-6 menu-item isotope-item filter-specialty">
+              <img :src="product.image" class="menu-img" alt="">
+              <div class="menu-content">
+                <a href="#specials">Rajutan Benang Motiv PNG</a>
+              </div>
+              <div class="menu-ingredients">
+                Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+              </div>
+            </div>
+          </template>
           <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/menu/product 6.jpg" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Anting-anting Bia</a>
-            </div>
-            <div class="menu-ingredients">
-              Anting-anting yang terbuat dari bia adalah salah satu Aksesoris yang dapat digunakan oleh para wanita.
-            </div>
-          </div>
           <!-- Menu Item -->
+        </div>
 
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/rajutan-kulit-kayu/11.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Noken tas kulit kayu</a>
-            </div>
-            <div class="menu-ingredients">
-              Noken rajutan kulit kayu ini lebih cocok bagi perempuan, akan tampill lebih cantik jika di pakai ke acara
-              nikah atau pertemuan apa saja 😁
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/aksesoris/20.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Koteka Coklat</a>
-            </div>
-            <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/rajutan-benang/19.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Noken Besar kulit kayu</a>
-            </div>
-            <div class="menu-ingredients">
-              Bisa dapat mengisi barang belanjaan seperti sayur atau barang belanjaan llainnya
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="assets/img/aksesoris/21.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Koteka Hitam</a>
-            </div>
-            <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="assets/img/rajutan-kulit-kayu/1.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Noken Kulit Kayu</a>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/rajutan-benang/17.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Noken Besar Kulit kayu Original</a>
-            </div>
-            <div class="menu-ingredients">
-              Noken asli rajutan mama papua dari kulit kayu
-              dan diolah menjadi Noken yang dapat digunakan menjadi gendongan bayi atau mengisi barang bbanyak
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="assets/img/rajutan-benang/18.png" class="menu-img" alt="">
-            <div class="menu-content">
-              <a href="#specials">Rajutan Benang Motiv PNG</a>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-            </div>
-          </div>
-          <!-- Menu Item -->
-
-
-          <!-- Menu Item -->
+        <div class="more col-lg-6 menu-item isotope-item pt-4">
+          <a href="#" class="nav-link">Lihat Selengkapnya..</a>
 
         </div>
         <!-- Menu Container -->
@@ -386,7 +323,7 @@
     <!-- Product Section -->
     <section id="specials" class="specials section">
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+      <div class="container section-title" data-aos="fade-up" style="padding-top: 7rem;">
         <h2>Product</h2>
         <div>
           <span>Lihat</span>
@@ -409,6 +346,7 @@
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-3">Aksesoris</a>
               </li>
+
             </ul>
           </div>
 
@@ -434,7 +372,13 @@
                                 <span class="diskon" x-text="product.diskon">Rp 300.000</span>
 
                                 <div class="d-flex justify-content-between">
-                                  <i class="bi bi-cart icon" @click="addToCart(product)"></i>
+                                  <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
+                                    @click="  if (!product.inCart) { 
+                                      product.inCart = true;    
+                                      addToCart(product);    
+                                      setTimeout(() => product.inCart = false, 2000);  }">
+                                  </i>
+
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
                                     @click="product.liked = !product.liked">
                                   </i>
@@ -467,7 +411,12 @@
                                 <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <span class="diskon" x-text="product.diskon"></span>
                                 <div class="d-flex justify-content-between">
-                                  <i class="bi bi-cart icon" @click="addToCart(product)"></i>
+                                  <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
+                                    @click="  if (!product.inCart) { 
+                                    product.inCart = true;    
+                                    addToCart(product);    
+                                    setTimeout(() => product.inCart = false, 2000);  }">
+                                  </i>
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
                                     @click="product.liked = !product.liked">
                                   </i>
@@ -499,7 +448,12 @@
                                 <span class="diskon" x-text="product.diskon"></span>
 
                                 <div class="d-flex justify-content-between">
-                                  <i class="bi bi-cart icon" @click="addToCart(product)"></i>
+                                  <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
+                                    @click="  if (!product.inCart) { 
+                                    product.inCart = true;    
+                                    addToCart(product);    
+                                    setTimeout(() => product.inCart = false, 2000);  }">
+                                  </i>
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
                                     @click="product.liked = !product.liked">
                                   </i>
@@ -519,6 +473,7 @@
             </div>
           </div>
           <!-- card product end -->
+          <a class="nav-link text-end mx-0 align-items-star" href="#">Lihat Selengkapnya</a>
 
         </div>
       </div>
