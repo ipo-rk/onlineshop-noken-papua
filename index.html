@@ -248,19 +248,17 @@
 
 
     <!-- Menu Section -->
-    <section id="menu" class="menu section" x-data="cartHandler()">
+    <section id="menu" class="menu section">
+
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Jenis Noken</h2>
-        <div>
-          <span>Check Our </span>
-          <span class="description-title">NOKEN</span>
-        </div>
+        <h2>Product</h2>
+        <div><span>Check Our Tasty</span> <span class="description-title">Product</span></div>
       </div>
       <!-- End Section Title -->
 
-      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order"
-        style="padding-bottom: 50%;">
+      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul class="menu-filters isotope-filters">
@@ -274,49 +272,109 @@
         <!-- Menu Filters -->
 
         <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
-          <template x-for="(product, index) in products" :key="product.name + index">
+          <template x-for="(product, index) in products" :key="index">
             <div class="col-lg-6 menu-item isotope-item filter-starters">
-              <img :src="product.image" class="menu-img" :alt="product.name">
-              <div class="menu-content">
-                <a href="#specials">Noken Kulit Kayu </a>
-              </div>
-              <div class="menu-ingredients">
-                Noken ini bisa dibawah kemana saja dan mengisi barang bawaan seperti buku, dompet dan lainnya
-              </div>
-            </div>
-          </template>
-          <template x-for="(product, index) in products2" :key="product.name + index">
-            <div class="col-lg-6 menu-item isotope-item filter-salads">
               <img :src="product.image" class="menu-img" alt="">
               <div class="menu-content">
-                <a href="#specials">Anting-anting Bia</a>
+                <a href="#" x-text="product.name"></a>
               </div>
-              <div class="menu-ingredients">
-                Anting-anting yang terbuat dari bia adalah salah satu Aksesoris yang dapat digunakan oleh para wanita.
+              <div class="menu-ingredients" x-text="product.descriptions">
+
               </div>
             </div>
           </template>
+          <!-- Menu Item -->
           <template x-for="(product, index) in products3" :key="product.name + index">
             <div class="col-lg-6 menu-item isotope-item filter-specialty">
               <img :src="product.image" class="menu-img" alt="">
               <div class="menu-content">
-                <a href="#specials">Rajutan Benang Motiv PNG</a>
+                <a href="#" x-text="product.name"> </a>
               </div>
-              <div class="menu-ingredients">
-                Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+              <div class="menu-ingredients" x-text="product.descriptions">
               </div>
             </div>
           </template>
           <!-- Menu Item -->
+          <template x-for="(product, index) in products2" :key="product.name + index">
+            <div class="col-lg-6 menu-item isotope-item filter-salads">
+              <img :src="product.image" class="menu-img" alt="">
+              <div class="menu-content">
+                <a href="#" x-text="product.name"> </a>
+              </div>
+              <div class="menu-ingredients" x-text="product.descriptions">
+              </div>
+            </div>
+          </template>
           <!-- Menu Item -->
-        </div>
 
-        <div class="more col-lg-6 menu-item isotope-item pt-4">
-          <a href="#" class="nav-link">Lihat Selengkapnya..</a>
+          <!-- img none start -->
+          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+            <img src=" " class="menu-img-none" alt="">
+            <div class="menu-content">
+              <a href="#"> </a><span> </span>
+            </div>
+            <div class="menu-ingredients">
+            </div>
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-starters">
+            <img src=" " class="menu-img-none" alt="">
+            <div class="menu-content">
+              <a href="#"> </a><span> </span>
+            </div>
+            <div class="menu-ingredients">
+            </div>
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-starters">
+            <img src=" " class="menu-img-none" alt="">
+            <div class="menu-content">
+              <a href="#"> </a><span> </span>
+            </div>
+            <div class="menu-ingredients">
+            </div>
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-salads">
+            <img src=" " class="menu-img-none" alt="">
+            <div class="menu-content">
+              <a href="#"> </a><span> </span>
+            </div>
+            <div class="menu-ingredients">
+            </div>
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-salads">
+            <img src="" class="menu-img-none" alt="">
+            <div class="menu-content">
+              <a href="#"> </a><span> </span>
+            </div>
+            <div class="menu-ingredients">
+
+            </div>
+          </div>
+          <!-- Menu Item -->
+
+          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+            <img src=" " class="menu-img-none" alt="">
+            <div class="menu-content">
+              <a href="#"> </a><span> </span>
+            </div>
+            <div class="menu-ingredients">
+            </div>
+          </div>
+          <!-- Menu Item -->
+          <!-- img none start -->
 
         </div>
         <!-- Menu Container -->
+
       </div>
+
     </section>
     <!-- /Menu Section -->
 
