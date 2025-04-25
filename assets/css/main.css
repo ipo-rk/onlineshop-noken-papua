@@ -363,6 +363,51 @@ h6 {
   display: block;
 }
 
+/* Popup start */
+/* Popup Form */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.popup-content h5 {
+  text-align: center;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-content .form-label {
+  margin-bottom: 5px;
+}
+
+.popup-content .form-control {
+  margin-bottom: 15px;
+}
+
+.popup-content button {
+  margin-top: 10px;
+}
+
+/* Popup end */
 @media (min-width: 1024px) {
 
 }
@@ -715,37 +760,47 @@ h6 {
 # Preloader
 --------------------------------------------------------------*/
 
-#preloader{
+#preloader {
   position: fixed;
   inset: 0;
   z-index: 999999;
   overflow: hidden;
   background: var(--background-color);
   transition: all 0.6s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #preloader:before {
   content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
+  position: absolute;
+  width: 70px;
+  height: 70px;
   border: 6px solid #ffffff;
   border-color: var(--accent-color) transparent var(--accent-color) transparent;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
   animation: animate-preloader 1.5s linear infinite;
 }
 
+#preloader-img {
+  position: absolute;
+  width: 40px; /* Sesuaikan dengan ukuran yang kamu mau */
+  height: 40px;
+  animation: animate-preloader 1.5s linear infinite;
+  z-index: 1;
+}
+
+/* Animasi putaran */
 @keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
+
 
 
 /*--------------------------------------------------------------

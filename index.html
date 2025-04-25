@@ -124,6 +124,30 @@
           <button class="btn w-100 mt-3 btn-outline-dark text-white" @click="checkout()">Checkout</button>
         </div>
 
+        <!-- Form Input Checkout -->
+        <div x-show="showForm" class="popup-form border-t border-gray-300">
+          <div class="popup-content mb-3">
+            <h5 class="text-dark mb-3">Masukan Data Diri</h5>
+            <div class="mb-2">
+              <label class="block text-sm font-medium">Nama</label>
+              <input type="text" id="name" x-model="customerData.name"
+                class="form-control w-full border rounded px-2 py-1" placeholder="Nama lengkap">
+            </div>
+            <div class="mb-2">
+              <label class="block text-sm font-medium">Alamat</label>
+              <textarea x-model="customerData.address" type="text" id="address"
+                class="form-control w-full border rounded px-2 py-1" placeholder="Alamat lengkap"></textarea>
+            </div>
+            <div class="mb-2">
+              <label class="block text-sm font-medium">Email</label>
+              <input type="email" id="email" x-model="customerData.email"
+                class="form-control w-full border rounded px-2 py-1" placeholder="Email aktif">
+            </div>
+            <button @click="submitOrder()" class="bg-green-600 text-dark w-100 py-2 mt-2 rounded">Order
+              Sekarang</button>
+          </div>
+
+        </div>
 
       </div>
     </div>
@@ -738,9 +762,10 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  <!-- <div id="preloader">
-  </div> -->
-  <!-- <img src="assets/img/favicon.png" alt="Noken Papua" id="preloader-img"> -->
+  <div id="preloader">
+    <img src="assets/img/favicon.png" alt="Noken Papua" id="preloader-img">
+  </div>
+
 
 
   <!-- Vendor JS Files -->
