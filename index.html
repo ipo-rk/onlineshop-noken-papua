@@ -125,7 +125,8 @@
         </div>
 
         <!-- Form Input Checkout -->
-        <div x-show="showForm" class="popup-form border-t border-gray-300">
+        <div x-show="showForm" x-cloak x-transition @click.self="showForm = false"
+          class="popup-form border-t border-gray-300">
           <div class="popup-content mb-3">
             <h5 class="text-dark mb-3">Masukan Data Diri</h5>
             <div class="mb-2">
@@ -143,7 +144,8 @@
               <input type="email" id="email" x-model="customerData.email"
                 class="form-control w-full border rounded px-2 py-1" placeholder="Email aktif">
             </div>
-            <button @click="submitOrder()" class="bg-green-600 text-dark w-100 py-2 mt-2 rounded">Order
+            <button @click="submitOrder()" class="bg-green-600  text-dark w-100 py-2 mt-2 rounded"
+              style="background-color: var(--accent-color); border: none;">Order
               Sekarang</button>
           </div>
 
