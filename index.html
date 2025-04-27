@@ -78,9 +78,9 @@
         </nav>
 
         <!-- Overlay untuk menutup sidebar -->
-        <div class="sidebar-overlay" @click="closeSidebar()" x-show="showSidebar" x-transition.opacity></div>
+        <!-- Overlay untuk menutup sidebar saat klik di luar -->
 
-        <!-- Sidebar Shopping Cart -->
+        <!-- Sidebar -->
         <div class="sidebar text-dark" :class="showSidebar ? 'active' : ''">
           <button class="btn-close" @click="closeSidebar()"></button>
           <h4 class="mt-3">Shopping Cart</h4>
@@ -115,41 +115,18 @@
           </ul>
 
           <hr>
+
           <div class="d-flex justify-content-between">
             <strong>Total Barang:</strong> <span x-text="totalItems"></span>
           </div>
           <div class="d-flex justify-content-between">
             <strong>Total Harga:</strong> <span>Rp <span x-text="totalPrice.toLocaleString()"></span></span>
           </div>
+
           <button class="btn w-100 mt-3 btn-outline-dark text-white" @click="checkout()">Checkout</button>
         </div>
 
-        <!-- Form Input Checkout -->
-        <div x-show="showForm" x-cloak x-transition @click.self="showForm = false"
-          class="popup-form border-t border-gray-300">
-          <div class="popup-content mb-3">
-            <h5 class="text-dark mb-3">Masukan Data Diri</h5>
-            <div class="mb-2">
-              <label class="block text-sm font-medium">Nama</label>
-              <input type="text" id="name" x-model="customerData.name"
-                class="form-control w-full border rounded px-2 py-1" placeholder="Nama lengkap">
-            </div>
-            <div class="mb-2">
-              <label class="block text-sm font-medium">Alamat</label>
-              <textarea x-model="customerData.address" type="text" id="address"
-                class="form-control w-full border rounded px-2 py-1" placeholder="Alamat lengkap"></textarea>
-            </div>
-            <div class="mb-2">
-              <label class="block text-sm font-medium">Email</label>
-              <input type="email" id="email" x-model="customerData.email"
-                class="form-control w-full border rounded px-2 py-1" placeholder="Email aktif">
-            </div>
-            <button @click="submitOrder()" class="bg-green-600  text-dark w-100 py-2 mt-2 rounded"
-              style="background-color: var(--accent-color); border: none;">Order
-              Sekarang</button>
-          </div>
 
-        </div>
 
       </div>
     </div>
@@ -230,7 +207,7 @@
         <div class="row gy-4">
           <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
             <img src="assets/img/tentang.jpg" class="img-fluid" alt="" />
-            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+            <a href="assets/img/202504270142.mp4" class="glightbox pulsating-play-btn"></a>
           </div>
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
             <h3>
@@ -395,23 +372,22 @@
                     <!-- card product -->
                     <div class="container mt-5">
                       <div class="row">
-
                         <template x-for="(product, index) in products" :key="index">
-                          <div class="col-md-3 mb-3">
+                          <div class="col-md-3 col-6 mb-3">
                             <div class="card">
                               <img :src="product.image" class="card-img-top" alt="Product">
                               <div class="card-body">
                                 <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span>
-                                </p>
+                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
                                 <span class="diskon" x-text="product.diskon">Rp 300.000</span>
 
                                 <div class="d-flex justify-content-between">
                                   <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
-                                    @click="  if (!product.inCart) { 
-                                      product.inCart = true;    
-                                      addToCart(product);    
-                                      setTimeout(() => product.inCart = false, 2000);  }">
+                                    @click="if (!product.inCart) { 
+                                        product.inCart = true;    
+                                        addToCart(product);    
+                                        setTimeout(() => product.inCart = false, 2000); 
+                                    }">
                                   </i>
 
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
@@ -422,7 +398,6 @@
                             </div>
                           </div>
                         </template>
-
                       </div>
                     </div>
                     <!-- card product end -->
@@ -432,67 +407,32 @@
               </div>
               <div class="tab-pane" id="specials-tab-2">
                 <div class="row">
-                  <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
+                  <div class="col-lg-12 text-center order-2 order-lg-2 d-flex">
 
-                    <!-- card product 2 -->
+                    <!-- card product -->
                     <div class="container mt-5">
                       <div class="row">
                         <template x-for="(product, index) in products2" :key="index">
-                          <div class="col-md-3 mb-3">
-                            <div class="card">
-                              <img :src="product.image" class="card-img-top" alt="product">
-                              <div class="card-body">
-                                <h5 class="card-title" x-text="product.name"></h5>
-                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
-                                <span class="diskon" x-text="product.diskon"></span>
-                                <div class="d-flex justify-content-between">
-                                  <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
-                                    @click="  if (!product.inCart) { 
-                                    product.inCart = true;    
-                                    addToCart(product);    
-                                    setTimeout(() => product.inCart = false, 2000);  }">
-                                  </i>
-                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
-                                    @click="product.liked = !product.liked">
-                                  </i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </template>
-                      </div>
-                    </div>
-                    <!-- card product 2 end -->
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-3">
-                <div class="row">
-                  <div class="col-lg-12 text-center order-1 order-lg-2 d-flex">
-
-                    <!-- card product 3-->
-                    <div class="container mt-5">
-                      <div class="row">
-                        <template x-for="(product, index) in products3" :key="index">
-                          <div class="col-md-3 mb-3">
+                          <div class="col-md-3 col-6 mb-3">
                             <div class="card">
                               <img :src="product.image" class="card-img-top" alt="Product">
                               <div class="card-body">
                                 <h5 class="card-title" x-text="product.name"></h5>
                                 <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
-                                <span class="diskon" x-text="product.diskon"></span>
+                                <span class="diskon" x-text="product.diskon">Rp 300.000</span>
 
                                 <div class="d-flex justify-content-between">
                                   <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
-                                    @click="  if (!product.inCart) { 
-                                    product.inCart = true;    
-                                    addToCart(product);    
-                                    setTimeout(() => product.inCart = false, 2000);  }">
+                                    @click="if (!product.inCart) { 
+                                        product.inCart = true;    
+                                        addToCart(product);    
+                                        setTimeout(() => product.inCart = false, 2000); 
+                                    }">
                                   </i>
+
                                   <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
                                     @click="product.liked = !product.liked">
                                   </i>
-
                                 </div>
                               </div>
                             </div>
@@ -500,11 +440,53 @@
                         </template>
                       </div>
                     </div>
-                    <!-- card product 3 end -->
+                    <!-- card product end -->
 
                   </div>
                 </div>
               </div>
+              <div class="tab-pane" id="specials-tab-3">
+                <div class="row">
+                  <div class="col-lg-12 text-center order-2 order-lg-2 d-flex">
+
+                    <!-- card product -->
+                    <div class="container mt-5">
+                      <div class="row">
+                        <template x-for="(product, index) in products3" :key="index">
+                          <div class="col-md-3 col-6 mb-3">
+                            <div class="card">
+                              <img :src="product.image" class="card-img-top" alt="Product">
+                              <div class="card-body">
+                                <h5 class="card-title" x-text="product.name"></h5>
+                                <p class="card-text mb-0">Rp <span x-text="product.price.toLocaleString()"></span></p>
+                                <span class="diskon" x-text="product.diskon">Rp 300.000</span>
+
+                                <div class="d-flex justify-content-between">
+                                  <i :class="product.inCart ? 'bi bi-check2-circle text-success icon' : 'bi bi-cart icon'"
+                                    @click="if (!product.inCart) { 
+                                        product.inCart = true;    
+                                        addToCart(product);    
+                                        setTimeout(() => product.inCart = false, 2000); 
+                                    }">
+                                  </i>
+
+                                  <i :class="product.liked ? 'bi bi-heart-fill text-danger icon' : 'bi bi-heart icon'"
+                                    @click="product.liked = !product.liked">
+                                  </i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                    <!-- card product end -->
+
+                  </div>
+                </div>
+              </div>
+
+
             </div>
           </div>
           <!-- card product end -->
@@ -781,6 +763,38 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+
+
+  <!-- Form Input Checkout -->
+  <div x-show="showForm" x-cloak x-transition @click.self="showForm = false"
+    class="popup-form border-t border-gray-300">
+    <div class="popup-content mb-3">
+      <h5 class="text-dark mb-3">Masukan Data Diri</h5>
+      <div class="mb-2">
+        <label class="block text-sm font-medium">Nama :</label>
+        <input type="text" id="name" x-model="customerData.name" class="form-control w-full border rounded px-2 py-1"
+          placeholder="Nama lengkap">
+      </div>
+      <div class="mb-2">
+        <label class="block text-sm font-medium">Alamat :</label>
+        <textarea x-model="customerData.address" type="text" id="address"
+          class="form-control w-full border rounded px-2 py-1" placeholder="Alamat lengkap"></textarea>
+      </div>
+      <div class="mb-2">
+        <label class="block text-sm font-medium">Email :</label>
+        <input type="email" id="email" x-model="customerData.email" class="form-control w-full border rounded px-2 py-1"
+          placeholder="Email aktif">
+      </div>
+      <button @click="submitOrder()" class="bg-green-600  text-dark w-100 py-2 mt-2 rounded"
+        style="background-color: var(--accent-color); border: none;">Order
+        Sekarang</button>
+    </div>
+    <div x-show="showSidebar" class="sidebar-overlay" @click="closeSidebar()" x-transition.opacity></div>
+
+
+  </div>
 </body>
 
 </html>
